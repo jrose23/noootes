@@ -63,7 +63,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header logo="Noootes." addNote={addNote} noteData={noteData} />
+            <Header logo="Noootes." addNote={addNote} notes={noteData} />
             {noteData.length === 0 && <Message />}
             {noteData.length > 0 && (
                 <NotesGrid notes={noteData} updateNote={updateNote} deleteNote={deleteNote} />
