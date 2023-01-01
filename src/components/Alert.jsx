@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 
-function Alert({ maxChars, id, setShowAlert }) {
+function Alert({ id, message, setShowAlert }) {
     setTimeout(() => {
         setShowAlert(false);
     }, 2000);
@@ -18,7 +18,7 @@ function Alert({ maxChars, id, setShowAlert }) {
                 }}
             >
                 <div className="alert">
-                    <p>Sorry, only {maxChars} characters allowed...</p>
+                    <p>{message}</p>
                 </div>
             </motion.div>
         </AnimatePresence>

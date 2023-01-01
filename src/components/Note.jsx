@@ -27,7 +27,13 @@ function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote
                 onKeyDown={e => checkChars(e)}
             />
             <AnimatePresence>
-                {showAlert && <Alert maxChars={maxChars} id={id} setShowAlert={setShowAlert} />}
+                {showAlert && (
+                    <Alert
+                        id={id}
+                        message={`Sorry, only ${maxChars} characters allowed...`}
+                        setShowAlert={setShowAlert}
+                    />
+                )}
             </AnimatePresence>
             <div className="note-info">
                 <p>{created}</p>
