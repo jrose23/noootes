@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import NotesGrid from './components/NotesGrid';
 import Message from './components/Message';

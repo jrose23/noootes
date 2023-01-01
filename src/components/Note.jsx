@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import Alert from './Alert';
 import TextareaAutosize from 'react-textarea-autosize';
 import CrossIconLight from '../assets/cross-icon-light.svg';
+import CopyIcon from '../assets/copy-icon.svg';
 
 function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote }) {
     const [showAlert, setShowAlert] = useState(false);
@@ -40,9 +41,17 @@ function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote
                 <p>
                     {numChars} / {maxChars}
                 </p>
-                <button className="delete-note-btn" onClick={() => deleteNote(id)}>
-                    <img src={CrossIconLight} className="delete-note-btn--icon" />
-                </button>
+                <div className="note-control">
+                    <button
+                        className="note-control-btn"
+                        onClick={() => console.log('copy button clicked')}
+                    >
+                        <img src={CopyIcon} className="note-control-btn--icon" />
+                    </button>
+                    <button className="note-control-btn" onClick={() => deleteNote(id)}>
+                        <img src={CrossIconLight} className="note-control-btn--icon delete" />
+                    </button>
+                </div>
             </div>
         </div>
     );

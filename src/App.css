@@ -46,7 +46,7 @@
 }
 
 .header .note-count {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: var(--font-medium);
     color: var(--color-secondary);
 }
@@ -73,9 +73,15 @@
 }
 
 .add-note-btn:hover,
+.add-note-btn:focus,
+.note-control-btn:hover,
+.note-control-btn:focus {
+    transform: scale(1.0625);
+}
+
+.add-note-btn:hover,
 .add-note-btn:focus {
     background-color: var(--color-accent);
-    transform: scale(1.05);
 }
 
 .notes-grid {
@@ -131,7 +137,14 @@
     text-transform: uppercase;
     color: var(--color-primary);
     background-color: var(--color-accent);
-    padding: 0.75rem 1rem;
+    padding: 0.625rem 1rem;
+}
+
+.note-info .note-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .note-menu {
@@ -139,21 +152,25 @@
     cursor: pointer;
 }
 
-.delete-note-btn {
+.note-control-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.25rem;
+    padding: 0.375rem;
     outline: none;
     border: none;
     border-radius: var(--border-rad);
     background-color: var(--color-primary);
     cursor: pointer;
+    transition: all 0.25s ease-in-out;
 }
 
-.delete-note-btn--icon {
+.note-control-btn--icon {
     width: 0.75rem;
     height: 0.75rem;
+}
+
+.note-control-btn--icon.delete {
     transform: rotate(45deg);
 }
 
