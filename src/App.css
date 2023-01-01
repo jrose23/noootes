@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 16px;
+    font-family: 'Asap', sans-serif;
+
+    --color-primary: rgba(50, 30, 80, 1);
+    --color-secondary: rgba(255, 255, 255, 1);
+    --color-accent: rgba(240, 235, 250, 1);
+
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    --border-rad: 0.25rem;
+}
+
+#root {
+    max-width: 1000px;
+    padding: 1rem calc(1rem + 3px) 1rem 1rem;
+    margin: 0 auto;
+}
+
+.header {
+    min-width: calc(100% + 3px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    padding: 1rem;
+    border-radius: var(--border-rad);
+    margin-bottom: 1rem;
+}
+
+.header .logo {
+    font-size: 2rem;
+    font-weight: var(--font-bold);
+    color: var(--color-secondary);
+}
+
+.header .note-count {
+    font-size: 1.125rem;
+    font-weight: var(--font-medium);
+    color: var(--color-secondary);
+}
+
+.header .header-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.add-note-btn {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    border-radius: var(--border-rad);
+    background-color: var(--color-secondary);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.add-note-btn:hover,
+.add-note-btn:focus {
+    background-color: var(--color-accent);
+    transform: scale(1.05);
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.note {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-rad);
+    box-shadow: 3px 3px 0px var(--color-primary);
+    /* padding: 1rem; */
+    background-color: var(--color-secondary);
+    overflow: hidden;
+    position: relative;
+}
+
+.note-content::selection {
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+}
+
+.note-content {
+    min-width: 100%;
+    min-height: 120px;
+    font-size: 1rem;
+    font-family: var(--font);
+    font-weight: var(--font-semibold);
+    line-height: 1.3;
+    color: var(--color-primary);
+    outline: none;
+    border: none;
+    resize: none;
+    overflow: hidden;
+    background-color: var(--color-secondary);
+    padding: 1rem;
+}
+
+.note-info {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+    padding: 0.75rem 1rem;
+}
+
+.note-menu {
+    fill: var(--color-primary);
+    cursor: pointer;
+}
+
+.delete-note-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    outline: none;
+    border: none;
+    border-radius: var(--border-rad);
+    background-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.delete-note-btn--icon {
+    width: 0.75rem;
+    height: 0.75rem;
+    transform: rotate(45deg);
+}
+
+.alert-container {
+    min-width: 100%;
+    position: absolute;
+    left: 0px;
+    /* bottom: -36px; */
+    bottom: -8px;
+    z-index: 10000;
+}
+
+.alert {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: var(--font-semibold);
+    letter-spacing: 0.0375rem;
+    color: var(--color-secondary);
+    border-radius: 0.125rem;
+    text-align: center;
+}
