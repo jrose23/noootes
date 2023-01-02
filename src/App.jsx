@@ -39,8 +39,6 @@ function App() {
         const newNoteData = noteData.filter(note => note.id !== noteID);
 
         setNoteData(newNoteData);
-
-        console.log(`Deleted Note ${noteID}...`);
     }
 
     // Generate random Note ID
