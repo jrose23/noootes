@@ -7,13 +7,18 @@ import CopyIcon from '../assets/copy-icon.svg';
 function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote }) {
     const [showCharAlert, setShowCharAlert] = useState(false);
     const [showCopyAlert, setShowCopyAlert] = useState(false);
+    const [showEmptyAlert, setShowEmptyAlert] = useState(false);
 
     const noteRef = useRef();
 
     function copyNote() {
-        noteRef.current.select();
-        navigator.clipboard.writeText(content);
-        setShowCopyAlert(true);
+        if (content.length > 0) {
+            noteRef.current.select();
+            navigator.clipboard.writeText(content);
+            setShowCopyAlert(true);
+        } else {
+            setShowEmptyAlert(true);
+        }
     }
 
     return (
@@ -34,6 +39,7 @@ function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote
                     message={`Sorry, only ${maxChars} characters allowed...`}
                     setShowCharAlert={setShowCharAlert}
                     setShowCopyAlert={setShowCopyAlert}
+                    setShowEmptyAlert={setShowEmptyAlert}
                 />
             )}
 
@@ -43,6 +49,17 @@ function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote
                     message={'Note copied to clipboard!'}
                     setShowCharAlert={setShowCharAlert}
                     setShowCopyAlert={setShowCopyAlert}
+                    setShowEmptyAlert={setShowEmptyAlert}
+                />
+            )}
+
+            {showEmptyAlert && (
+                <Alert
+                    id={id}
+                    message={'Oops! No text to copy...'}
+                    setShowCharAlert={setShowCharAlert}
+                    setShowCopyAlert={setShowCopyAlert}
+                    setShowEmptyAlert={setShowEmptyAlert}
                 />
             )}
 

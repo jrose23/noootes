@@ -10,7 +10,7 @@
     font-size: 16px;
     font-family: 'Asap', sans-serif;
 
-    --color-primary: rgba(50, 30, 80, 1);
+    --color-primary: rgb(50, 30, 80);
     --color-secondary: rgba(255, 255, 255, 1);
     /* --color-accent: rgba(240, 235, 250, 1); */
     /* --color-accent: rgba(215, 200, 250, 0.675); */
@@ -97,7 +97,6 @@
     border: 2px solid var(--color-primary);
     border-radius: var(--border-rad);
     box-shadow: 3px 3px 0px var(--color-primary);
-    /* padding: 1rem; */
     background-color: var(--color-secondary);
     overflow: hidden;
     position: relative;
