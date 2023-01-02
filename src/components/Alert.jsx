@@ -13,6 +13,7 @@ function Alert({ id, message, setShowCharAlert, setShowCopyAlert }) {
                 key={id}
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: -52, opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{
                     type: 'spring',
                     damping: 15
