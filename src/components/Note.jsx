@@ -1,51 +1,58 @@
-import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
 import Alert from './Alert';
 import TextareaAutosize from 'react-textarea-autosize';
 import CrossIconLight from '../assets/cross-icon-light.svg';
 import CopyIcon from '../assets/copy-icon.svg';
 
 function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote }) {
-    const [showAlert, setShowAlert] = useState(false);
+    const [showCharAlert, setShowCharAlert] = useState(false);
+    const [showCopyAlert, setShowCopyAlert] = useState(false);
 
-    function checkChars(e) {
-        const { keyCode } = e;
+    const noteRef = useRef();
 
-        // Don't show alert if backspace key is pressed (keycode 8)
-        if (numChars === maxChars && keyCode !== 8) {
-            setShowAlert(true);
-        } else undefined;
+    function copyNote() {
+        noteRef.current.select();
+        navigator.clipboard.writeText(content);
+        setShowCopyAlert(true);
     }
 
     return (
         <div className="note">
             <TextareaAutosize
+                ref={noteRef}
                 className="note-content"
                 maxLength={maxChars}
                 placeholder="Enter a note..."
                 value={content}
                 onChange={e => updateNote(e, id, maxChars)}
-                onKeyDown={e => checkChars(e)}
+                onKeyPress={numChars === maxChars ? () => setShowCharAlert(true) : undefined}
             />
-            <AnimatePresence>
-                {showAlert && (
-                    <Alert
-                        id={id}
-                        message={`Sorry, only ${maxChars} characters allowed...`}
-                        setShowAlert={setShowAlert}
-                    />
-                )}
-            </AnimatePresence>
+
+            {showCharAlert && (
+                <Alert
+                    id={id}
+                    message={`Sorry, only ${maxChars} characters allowed...`}
+                    setShowCharAlert={setShowCharAlert}
+                    setShowCopyAlert={setShowCopyAlert}
+                />
+            )}
+
+            {showCopyAlert && (
+                <Alert
+                    id={id}
+                    message={'Note copied to clipboard!'}
+                    setShowCharAlert={setShowCharAlert}
+                    setShowCopyAlert={setShowCopyAlert}
+                />
+            )}
+
             <div className="note-info">
                 <p>{created}</p>
                 <p>
                     {numChars} / {maxChars}
                 </p>
                 <div className="note-control">
-                    <button
-                        className="note-control-btn"
-                        onClick={() => console.log('copy button clicked')}
-                    >
+                    <button className="note-control-btn" onClick={() => copyNote()}>
                         <img src={CopyIcon} className="note-control-btn--icon" />
                     </button>
                     <button className="note-control-btn" onClick={() => deleteNote(id)}>

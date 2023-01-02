@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 
-function Alert({ id, message, setShowAlert }) {
+function Alert({ id, message, setShowCharAlert, setShowCopyAlert }) {
     setTimeout(() => {
-        setShowAlert(false);
+        setShowCharAlert(false);
+        setShowCopyAlert(false);
     }, 2000);
 
     return (
