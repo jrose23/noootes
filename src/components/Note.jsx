@@ -14,7 +14,7 @@ function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote
     function copyNote() {
         if (content.length > 0) {
             noteRef.current.select();
-            navigator.clipboard.writeText(content);
+            navigator.clipboard.writeText(noteRef.current.value);
             setShowCopyAlert(true);
         } else {
             setShowEmptyAlert(true);
