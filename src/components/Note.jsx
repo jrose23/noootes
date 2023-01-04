@@ -5,19 +5,24 @@ import CrossIconLight from '../assets/cross-icon-light.svg';
 import CopyIcon from '../assets/copy-icon.svg';
 
 function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote }) {
-    const [showCharAlert, setShowCharAlert] = useState(false);
-    const [showCopyAlert, setShowCopyAlert] = useState(false);
-    const [showEmptyAlert, setShowEmptyAlert] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
 
     const noteRef = useRef();
+
+    function checkNoteChars() {
+        if (numChars === maxChars) {
+            setAlertMessage(`Sorry, only ${maxChars} characters allowed...`);
+            setShowAlert(true);
+        }
+    }
 
     function copyNote() {
         if (content.length > 0) {
             noteRef.current.select();
             navigator.clipboard.writeText(noteRef.current.value);
-            setShowCopyAlert(true);
-        } else {
-            setShowEmptyAlert(true);
+            setAlertMessage('Note copied to clipboard!');
+            setShowAlert(true);
         }
     }
 
@@ -30,38 +35,10 @@ function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote
                 placeholder="Enter a note..."
                 value={content}
                 onChange={e => updateNote(e, id, maxChars)}
-                onKeyPress={numChars === maxChars ? () => setShowCharAlert(true) : undefined}
+                onKeyPress={checkNoteChars}
             />
 
-            {showCharAlert && (
-                <Alert
-                    id={id}
-                    message={`Sorry, only ${maxChars} characters allowed...`}
-                    setShowCharAlert={setShowCharAlert}
-                    setShowCopyAlert={setShowCopyAlert}
-                    setShowEmptyAlert={setShowEmptyAlert}
-                />
-            )}
-
-            {showCopyAlert && (
-                <Alert
-                    id={id}
-                    message={'Note copied to clipboard!'}
-                    setShowCharAlert={setShowCharAlert}
-                    setShowCopyAlert={setShowCopyAlert}
-                    setShowEmptyAlert={setShowEmptyAlert}
-                />
-            )}
-
-            {showEmptyAlert && (
-                <Alert
-                    id={id}
-                    message={'Oops! No text to copy...'}
-                    setShowCharAlert={setShowCharAlert}
-                    setShowCopyAlert={setShowCopyAlert}
-                    setShowEmptyAlert={setShowEmptyAlert}
-                />
-            )}
+            {showAlert && <Alert alertMessage={alertMessage} setShowAlert={setShowAlert} />}
 
             <div className="note-info">
                 <p>{created}</p>

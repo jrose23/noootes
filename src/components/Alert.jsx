@@ -1,26 +1,22 @@
 import { motion } from 'framer-motion';
 
-function Alert({ id, message, setShowCharAlert, setShowCopyAlert, setShowEmptyAlert }) {
+function Alert({ alertMessage, setShowAlert }) {
     setTimeout(() => {
-        setShowCharAlert(false);
-        setShowCopyAlert(false);
-        setShowEmptyAlert(false);
+        setShowAlert(false);
     }, 2000);
 
     return (
         <motion.div
             className="alert-container"
-            key={id}
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: -52, opacity: 1 }}
-            exit={{ opacity: 0 }}
             transition={{
                 type: 'spring',
                 damping: 15
             }}
         >
             <div className="alert">
-                <p>{message}</p>
+                <p>{alertMessage}</p>
             </div>
         </motion.div>
     );
