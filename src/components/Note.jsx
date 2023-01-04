@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import Alert from './Alert';
 import TextareaAutosize from 'react-textarea-autosize';
 import CrossIconLight from '../assets/cross-icon-light.svg';
@@ -29,7 +30,15 @@ function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote
     }
 
     return (
-        <div className="note">
+        <motion.div
+            className="note"
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+                type: 'spring',
+                damping: 15
+            }}
+        >
             <TextareaAutosize
                 ref={noteRef}
                 className="note-content"
@@ -61,7 +70,7 @@ function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote
                     </button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

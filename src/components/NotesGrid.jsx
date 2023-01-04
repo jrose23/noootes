@@ -11,7 +11,7 @@ function NotesGrid({ notes, updateNote, deleteNote }) {
                         content={note.content}
                         created={note.created}
                         numChars={note.numChars}
-                        maxChars={10}
+                        maxChars={300}
                         updateNote={updateNote}
                         deleteNote={deleteNote}
                     />
