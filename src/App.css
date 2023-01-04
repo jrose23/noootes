@@ -161,6 +161,11 @@
     transition: all 0.25s ease-in-out;
 }
 
+.note-control-btn.disabled {
+    opacity: 0.625;
+    pointer-events: none;
+}
+
 .note-control-btn--icon {
     width: 0.75rem;
     height: 0.75rem;

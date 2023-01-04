@@ -18,9 +18,11 @@ function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote
     }
 
     function copyNote() {
-        if (content.length > 0) {
+        const { value } = noteRef.current;
+
+        if (value.length > 0) {
             noteRef.current.select();
-            navigator.clipboard.writeText(noteRef.current.value);
+            navigator.clipboard.writeText(value);
             setAlertMessage('Note copied to clipboard!');
             setShowAlert(true);
         }
@@ -46,7 +48,12 @@ function Note({ id, content, created, numChars, maxChars, updateNote, deleteNote
                     {numChars} / {maxChars}
                 </p>
                 <div className="note-control">
-                    <button className="note-control-btn" onClick={() => copyNote()}>
+                    <button
+                        className={
+                            numChars === 0 ? 'note-control-btn disabled' : 'note-control-btn'
+                        }
+                        onClick={copyNote}
+                    >
                         <img src={CopyIcon} className="note-control-btn--icon" />
                     </button>
                     <button className="note-control-btn" onClick={() => deleteNote(id)}>
