@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 function Alert({ alertMessage, setShowAlert }) {
-    setTimeout(() => {
-        setShowAlert(false);
-    }, 2000);
+    useEffect(() => {
+        const removeAlert = setTimeout(() => {
+            setShowAlert(false);
+        }, 2000);
+
+        return () => clearTimeout(removeAlert);
+    }, []);
 
     return (
         <motion.div
