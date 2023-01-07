@@ -9,6 +9,7 @@
 :root {
     font-size: 16px;
     font-family: 'Asap', sans-serif;
+    background-color: #fafafa;
 
     --color-primary: rgb(50, 30, 80);
     --color-secondary: rgba(255, 255, 255, 1);
@@ -194,4 +195,31 @@
     color: var(--color-secondary);
     border-radius: 0.125rem;
     text-align: center;
+}
+
+.message {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    border-radius: var(--border-rad);
+    padding: 2rem;
+}
+
+.message h1 {
+    margin: 0 0 0.5rem 0;
+}
+
+.message-img {
+    max-width: 16rem;
+    transition: all 0.25s ease-in-out;
+}
+
+.message-img:hover {
+    transform: scale(1.0625);
+    rotate: 3deg;
 }
