@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import NoteFella from '../assets/Note-Fella.svg';
 
-function Message() {
+function Message({ addNote, messageText, buttonText }) {
     return (
         <motion.div
             className="message"
@@ -13,8 +13,10 @@ function Message() {
             }}
         >
             <img className="message-img" src={NoteFella} />
-            <h1>Let's make some notes!</h1>
-            <h3>Create one now</h3>
+            <h1>{messageText}</h1>
+            <button className="message-btn" onClick={addNote}>
+                {buttonText}
+            </button>
         </motion.div>
     );
 }

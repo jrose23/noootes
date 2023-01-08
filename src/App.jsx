@@ -62,7 +62,13 @@ function App() {
     return (
         <div className="App">
             <Header logo="Noootes." addNote={addNote} notes={noteData} />
-            {noteData.length === 0 && <Message />}
+            {noteData.length === 0 && (
+                <Message
+                    addNote={addNote}
+                    messageText={"Let's make some notes!"}
+                    buttonText={'Add a new note'}
+                />
+            )}
             {noteData.length > 0 && (
                 <NotesGrid notes={noteData} updateNote={updateNote} deleteNote={deleteNote} />
             )}

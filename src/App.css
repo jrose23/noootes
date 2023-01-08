@@ -78,7 +78,9 @@
 .add-note-btn:hover,
 .add-note-btn:focus,
 .note-control-btn:hover,
-.note-control-btn:focus {
+.note-control-btn:focus,
+.message-btn:hover,
+.message-btn:focus {
     transform: scale(1.0625);
 }
 
@@ -209,17 +211,32 @@
     border-radius: var(--border-rad);
     padding: 2rem;
 }
-
-.message h1 {
-    margin: 0 0 0.5rem 0;
-}
-
 .message-img {
-    max-width: 16rem;
+    max-width: 15rem;
     transition: all 0.25s ease-in-out;
 }
 
 .message-img:hover {
     transform: scale(1.0625);
     rotate: 3deg;
+}
+
+.message h1 {
+    margin: 0 0 0.5rem 0;
+}
+
+.message-btn {
+    font: inherit;
+    font-size: 1.2rem;
+    font-weight: var(--font-bold);
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    outline: none;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-rad);
+    box-shadow: 3px 3px 0px var(--color-primary);
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
 }
