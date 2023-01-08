@@ -5,7 +5,7 @@ import Message from './components/Message';
 import './App.css';
 
 function App() {
-    const [noteData, setNoteData] = useState(JSON.parse(localStorage.getItem('noootes') || []));
+    const [noteData, setNoteData] = useState(JSON.parse(localStorage.getItem('noootes')) || []);
 
     // Save notes to storage when notes added/changed
     useEffect(() => {
